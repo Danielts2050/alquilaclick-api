@@ -21,7 +21,8 @@ router.get('/google/callback',
   }
 );
 
-router.put('/users/:id', AuthController.updateUser);
-router.delete('/users/:id', AuthController.deleteUser);
+router.put('/users/:id', requireAuth, requireRole('admin'), AuthController.updateUser);
+
+router.delete('/users/:id', requireAuth, requireRole('admin'), AuthController.deleteUser);
 
 export default router;
