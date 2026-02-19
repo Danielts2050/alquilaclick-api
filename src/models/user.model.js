@@ -122,6 +122,7 @@ static async findAll() {
       r.name AS rol_name
     FROM users u
     LEFT JOIN roles r ON r.id = u.rol_id
+    WHERE u.status = 'active'
     ORDER BY u.id DESC
   `;
 
